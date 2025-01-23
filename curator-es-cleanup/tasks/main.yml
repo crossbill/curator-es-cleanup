@@ -1,0 +1,20 @@
+---
+
+- name: Validate parameters
+  assert:
+    that:
+      - curator_es_cleanup_host_endpoint is defined
+      - curator_es_cleanup_no_of_days is defined
+
+- name: Install dependencies
+  pip:
+    name: "{{ item }}"
+  loop:
+    - elasticsearch
+    - elasticsearch-curator
+    - requests-aws4auth
+
+- name: Cleaning elasticsearch indices
+  curator_indices_cleanup:
+    host: '{{ curator_es_cleanup_host_endpoint }}'
+    unit_count: '{{ curator_es_cleanup_no_of_days }}'

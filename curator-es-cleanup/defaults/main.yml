@@ -1,0 +1,4 @@
+---
+
+curator_es_cleanup_host_endpoint: demo.us-east-1.es.amazonaws.com
+curator_es_cleanup_no_of_days: 45
